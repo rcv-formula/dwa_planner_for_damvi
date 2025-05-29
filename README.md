@@ -9,6 +9,9 @@ $ colcon build
 $ source install/setup.bash  
 $ ros2 launch dwa_planner_ros2 dwa_planner_launch.py
 
+test_avoid  
+$ ros2 launch dwa_planner_ros2 test_evasion_launch.py
+
 ----------
 
 기본적인 외부에서 받아오는 인풋은 다음과 같습니다.
