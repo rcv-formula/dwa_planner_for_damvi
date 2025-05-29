@@ -9,7 +9,9 @@ $ colcon build
 $ source install/setup.bash  
 $ ros2 launch dwa_planner_ros2 dwa_planner_launch.py
 
-test_avoid  
+test_avoid_simulation
+$ colcon build
+$ source install/setup.bash
 $ ros2 launch dwa_planner_ros2 test_evasion_launch.py
 
 ----------
