@@ -1,0 +1,15 @@
+<package format="3">
+  <name>dwa_planner_ros2</name>
+  <version>0.1.0</version>
+  <description>DWA Planner in Python for ROS 2</description>
+  <maintainer email="dewfresh1@inha.edu">JONGHAKKIM</maintainer>
+  <license>Apache-2.0</license>
+
+  <depend>rclpy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>yaml</depend>
+</package>
