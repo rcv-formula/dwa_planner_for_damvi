@@ -2,10 +2,11 @@
   <name>dwa_planner_ros2</name>
   <version>0.1.0</version>
   <description>Full-port of AMSL’s DWA Planner to Python/ROS 2</description>
+
   <maintainer email="dewfresh1@inha.edu">JONGHAKKIM</maintainer>
   <license>Apache-2.0</license>
 
-  <!-- Python 빌드툴 -->
+  <!-- Python 빌드 툴 -->
   <buildtool_depend>ament_python</buildtool_depend>
 
   <!-- 런타임 의존성 -->
@@ -17,4 +18,9 @@
   <depend>visualization_msgs</depend>
   <depend>tf2_ros</depend>
   <depend>tf_transformations</depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
 </package>
+
