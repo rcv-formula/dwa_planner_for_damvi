@@ -41,6 +41,7 @@ class DWAPlannerNode(Node):
         self.sel_pub    = self.create_publisher(Marker, 'selected_trajectory', 1)
         self.fp_pub     = self.create_publisher(MarkerArray, 'predict_footprints', 1)
 
+
         # 구독자
         self.create_subscription(PoseStamped,      '/move_base_simple/goal', self.goal_cb, 1)
         self.create_subscription(Path,             '/path',                  self.path_cb, 1)
@@ -115,6 +116,9 @@ class DWAPlannerNode(Node):
                                               goal_pos,
                                               self.obs_list,
                                               self.path_poses)
+        self.publish_goal_marker(goal_pos)
+        self.publish_selected_marker(best)
+
 
         # 명령 속도 퍼블리시
         cmd = Twist()
@@ -122,6 +126,33 @@ class DWAPlannerNode(Node):
         cmd.angular.z = best_traj[0].yawrate
         self.cmd_pub.publish(cmd)
         self.finish_pub.publish(self.finish_flag)
+
+    def publish_goal_marker(self, goal_point):
+        m = Marker()
+        m.header.frame_id = self.params.robot_frame
+        m.header.stamp = self.get_clock().now().to_msg()
+        m.ns = 'goal'
+        m.id = 0
+        m.type = Marker.SPHERE
+        m.action = Marker.ADD
+        m.pose.position = goal_point
+        m.pose.orientation.w = 1.0
+        m.scale.x = m.scale.y = m.scale.z = 0.2
+        m.color = ColorRGBA(r=0.0, g=1.0, b=0.0, a=0.8)
+        self.goal_pub.publish(m)
+
+    def publish_selected_marker(self, best_traj):
+        m = Marker()
+        m.header.frame_id = self.params.robot_frame
+        m.header.stamp = self.get_clock().now().to_msg()
+        m.ns = 'selected'
+        m.id = 0
+        m.type = Marker.LINE_STRIP
+        m.action = Marker.ADD
+        m.points = [Point(x=p.x, y=p.y, z=0.0) for p in best_traj.points]
+        m.scale.x = 0.05
+        m.color = ColorRGBA(r=1.0, g=0.0, b=0.0, a=1.0)
+        self.sel_pub.publish(m)
 
 
 def main(args=None):
