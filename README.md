@@ -1,4 +1,3 @@
-아직 테스트는 하지 않았고 단순히 ros2용으로 바꾸기만 진행했습니다.
 
 refernce : https://github.com/amslabtech/dwa_planner/tree/master/src
 
