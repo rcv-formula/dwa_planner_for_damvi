@@ -10,10 +10,10 @@ $ colcon build
 $ source install/setup.bash  
 $ ros2 run dwa_planner_ros2 dwa_planner_node --ros-args -p config_file:=config/params.yaml
 
-test_avoid_simulation 테스트 (fake input, fake goal이 있을때 장애물 회피 경로 나오는지 테스트)  
+test_avoid 테스트 (fake input, fake goal이 있을때 장애물 회피 경로 나오는지 테스트)  
 $ colcon build  
 $ source install/setup.bash  
-$ ros2 launch dwa_planner_ros2 test_evasion_launch.py
+$ ros2 launch dwa_planner_ros2 test_avoid_launch.py
 
 ----------
 
